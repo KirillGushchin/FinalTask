@@ -25,8 +25,7 @@ public class SiteAPIUtils {
                 "testId=" + testId + "&content=" + content);
     }
 
-    public static HttpResponse addAttachmentToTest(String testId, File file){
-        String endCodeFile = Base64EndCoder.encodeFileToBase64Binary(file);
+    public static HttpResponse addAttachmentToTest(String testId, String endCodeFile){
         return APIUtils.postRequest(propertyUtils.getStringPropertyValue("APIBaseURL") + APIEndpoints.addAttachment.getValue() +
                 "testId=" + testId + "&content=" + endCodeFile + "&contentType=" + ContentTypes.image_png.getValue());
     }

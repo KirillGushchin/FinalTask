@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-import java.io.File;
 import java.time.Duration;
 
 public class Driver {
@@ -44,8 +43,8 @@ public class Driver {
         }
     }
 
-    public static File takeScreenShot(){
-        return  ((TakesScreenshot) browser.getDriver()).getScreenshotAs(OutputType.FILE);
+    public static String takeScreenShot(){
+        return  ((TakesScreenshot) browser.getDriver()).getScreenshotAs(OutputType.BASE64);
     }
 
     public static Browser getBrowser(){

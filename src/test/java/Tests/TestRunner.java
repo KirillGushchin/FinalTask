@@ -55,7 +55,7 @@ public class TestRunner extends BaseTest {
        Steps.getSteps().closePopUP();
        Assert.assertFalse(Steps.getSteps().isPopUpDisplayed(),"Check that pop up isn't displayed");
        Driver.getBrowser().refresh();
-       Assert.assertEquals(popUpMessage, EXPECTED_POP_UP_MESSAGE);
+       Assert.assertEquals(popUpMessage, EXPECTED_POP_UP_MESSAGE, "Pop up message validation");
        Steps.getSteps().openProjectByName(NEW_PROJ_NAME);
        TestsModel test = new TestsModel(NEW_PROJ_NAME, TextGenerator.generateText(TEXT_LENGTH),
                TextGenerator.generateText(TEXT_LENGTH),
@@ -64,7 +64,7 @@ public class TestRunner extends BaseTest {
        String createdTestId = Steps.getSteps().addTestsViaAPI(test);
        String log = TextGenerator.generateText(TEXT_LENGTH);
        Steps.getSteps().addLogsToTestViaAPI(createdTestId, log);
-       File screenShot = Driver.takeScreenShot();
+       String screenShot = Driver.takeScreenShot();
        Steps.getSteps().addAttachmentToTestViaApi(createdTestId,screenShot); //not working
        Steps.getSteps().openTestByName(test.getTestName());
        softAssert.assertEquals(Steps.getSteps().getProjectNameFromTestDetailsPage(), test.getProjectName(),

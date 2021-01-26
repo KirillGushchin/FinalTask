@@ -157,8 +157,8 @@ public class Steps {
     public void addLogsToTestViaAPI(String testId, String logContent){
         SiteAPIUtils.addLogToPost(testId, logContent);
     }
-    public void addAttachmentToTestViaApi(String testId, File file){
-        SiteAPIUtils.addAttachmentToTest(testId,file);
+    public void addAttachmentToTestViaApi(String testId, String endCodeFile){
+        SiteAPIUtils.addAttachmentToTest(testId,endCodeFile);
     }
 
     public String getProjectNameFromTestDetailsPage(){
