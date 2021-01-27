@@ -10,8 +10,6 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import java.io.File;
 import java.util.List;
 
 @Listeners(Utils.Listener.class)
@@ -64,8 +62,8 @@ public class TestRunner extends BaseTest {
        String createdTestId = Steps.getSteps().addTestsViaAPI(test);
        String log = TextGenerator.generateText(TEXT_LENGTH);
        Steps.getSteps().addLogsToTestViaAPI(createdTestId, log);
-       String screenShot = Driver.takeScreenShot();
-       Steps.getSteps().addAttachmentToTestViaApi(createdTestId,screenShot); //not working
+     //  String screenShot = Driver.takeScreenShot();
+     //  Steps.getSteps().addAttachmentToTestViaApi(createdTestId,screenShot); //not working
        Steps.getSteps().openTestByName(test.getTestName());
        softAssert.assertEquals(Steps.getSteps().getProjectNameFromTestDetailsPage(), test.getProjectName(),
                "Check that project name is correct");

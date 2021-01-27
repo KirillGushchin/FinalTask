@@ -21,7 +21,7 @@ public class DBUtils {
         }
     }
 
-    public ResultSet runQUERY (String scriptPath) {
+    public ResultSet executeQuery(String scriptPath) {
         ResultSet rs = null;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(scriptPath));
@@ -29,8 +29,23 @@ public class DBUtils {
             st = conn.createStatement();
             rs = st.executeQuery(qwery);
         } catch (FileNotFoundException | SQLException e) {
-            System.err.println("Cannot read execute sql script due to following error : " + e.getMessage());
+            System.err.println("Can not read execute sql script due to following error : " + e.getMessage());
         }
         return rs;
     }
+
+    public ResultSet executeDelete(String scriptPath) {
+        ResultSet rs = null;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(scriptPath));
+            String qwery = reader.lines().collect(Collectors.joining());
+            st = conn.createStatement();
+            st.execute(qwery);
+        } catch (FileNotFoundException | SQLException e) {
+            System.err.println("Can not read execute sql script due to following error : " + e.getMessage());
+        }
+        return rs;
+    }
+
+
 }

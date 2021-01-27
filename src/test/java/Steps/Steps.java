@@ -14,7 +14,6 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 
-import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,6 +30,7 @@ public class Steps {
     private ProjectsPage projectsPage = new ProjectsPage(By.xpath(LABEL_PROJECT_PAGE), "Projects page");
     private final int POSITION = 7;
     private final String QUERY_NEXAGE_TESTS_FILE_PATH = "src/test/resources/GetAllNexageTests.sql";
+    private final String QUERY_DELETE_TEST_PROJECT = "src/test/resources/DeleteProject.sql";
 
     public String loginViaBasic(String url, String login, String password){
         String preparedCredentials = login + ":" + password + "@";
@@ -72,7 +72,7 @@ public class Steps {
     }
     public List<String> getTestsFromDB(String url, String user, String password) {
         DBUtils dbUtils = new DBUtils(url, user, password);
-        ResultSet rs=  dbUtils.runQUERY(QUERY_NEXAGE_TESTS_FILE_PATH);
+        ResultSet rs=  dbUtils.executeQuery(QUERY_NEXAGE_TESTS_FILE_PATH);
         List<String> listOfTestsDB = new ArrayList<String>();
         try {
             while (rs.next()) {
@@ -82,6 +82,11 @@ public class Steps {
                 System.err.println( "Can't get row due to followong error" + throwables.getMessage());
             }
         return listOfTestsDB;
+    }
+
+    public void deleteTestProject(String url, String user, String password){
+        DBUtils dbUtils = new DBUtils(url, user, password);
+        dbUtils.executeDelete(QUERY_DELETE_TEST_PROJECT);
     }
 
     public List<String> getStartDateFromTestsList(List<IElement> listOfElements){

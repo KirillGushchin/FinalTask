@@ -8,17 +8,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-import java.time.Duration;
 
 public class Driver {
     private static Browser browser;
     private static PropertyUtils propertyUtils = new PropertyUtils("src/test/resources/DrverParameters.properties");
 
 
-    public void setUp(){
-        Driver.getBrowser().setImplicitWaitTimeout(Duration.ofMinutes(propertyUtils.getIntPropertyValue("ImplictWat")));
-        Driver.getBrowser().setPageLoadTimeout(Duration.ofMinutes(propertyUtils.getIntPropertyValue("PageLoadTimeOut")));
-    }
     public static void addCookie(Cookie cookie){
         browser.getDriver().manage().addCookie(cookie);
     }
