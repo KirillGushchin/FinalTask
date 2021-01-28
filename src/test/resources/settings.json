@@ -1,6 +1,6 @@
 {
-  "browserName" : "chrome",
-  "isRemote": false,
+  "browserName" : ${env.Driver},
+  "isRemote": ${env.isRemote},
   "remoteConnectionUrl": "http://localhost:4444/wd/hub",
   "isElementHighlightEnabled" : true,
 
