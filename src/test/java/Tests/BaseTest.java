@@ -21,8 +21,8 @@ public abstract class BaseTest {
     @BeforeTest
     public void beforeMethod(){
         Driver.getBrowser().maximize();
-        TestRailUtils testRailUtils = new TestRailUtils(TRpropertyUtils.getStringPropertyValue("login"),
-                TRpropertyUtils.getStringPropertyValue("password"),
+        TestRailUtils testRailUtils = new TestRailUtils(System.getProperty("login"),
+                System.getProperty("password"),
                 TRpropertyUtils.getIntPropertyValue("projectId"),
                 TRpropertyUtils.getStringPropertyValue("runName"),
                 TRpropertyUtils.getIntPropertyValue("caseId"));
