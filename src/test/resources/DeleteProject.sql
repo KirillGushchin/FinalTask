@@ -1,1 +1,0 @@
-delete from project where name = 'TestProject';
