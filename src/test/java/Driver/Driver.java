@@ -38,6 +38,10 @@ public class Driver {
         }
     }
 
+    public static String takeScreenShot(){
+        return  ((TakesScreenshot) browser.getDriver()).getScreenshotAs(OutputType.BASE64);
+    }
+
     public static Browser getBrowser(){
         if (browser == null){
             browser = AqualityServices.getBrowser();
